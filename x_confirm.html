@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<title>JSmodal 'confirm' Example</title>
+
+  <script src="JSmodal.min.js"></script>
+  <link rel="stylesheet" href="JSmodalani.css">
+  <!--<link rel="stylesheet" href="JSmodalani.css">-->
+  <style>
+    a:hover {
+      cursor: pointer;
+      background: lightyellow;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Modal Boxes: confirm</h2>
+<!--
+NOTE: This CANNOT be implemented like the javascript 'confirm' statement!
+JSmodal.confirm is NON-BLOCKING - it does not "wait" for user action
+see x_alert.html "Open Example A"
+-->
+
+<button onclick='JSmodal.confirm("thisConfirm()", "Please confirm this");'>Call JSmodal.confirm</button>&nbsp;
+
+<!-- alternatively:
+    the 'confirmed' action can be included as shown here -->
+<a onclick="JSmodal.confirm(`
+  JSmodal.close();
+  alert('Confirmed')`,
+  'Please confirm this')">anchor JSmodal.confirm</a>
+
+<script>
+// User is a user supplied routine to process confirmed response
+function thisConfirm() {
+  JSmodal.close();  // must call to close the modal box
+  // actions to be performed on confirmation
+  alert("Confirmed");
+}
+</script>
+
+</body>
+</html>

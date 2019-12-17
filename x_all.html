@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<title>JSmodal All Example</title>
+
+  <script src="JSmodal.min.js"></script>
+  <link rel="stylesheet" href="JSmodalani.css">
+  <!--<link rel="stylesheet" href="JSmodal.css">-->
+  <style>
+    a:hover {
+      cursor: pointer;
+      background: lightyellow;
+    }
+  </style>
+</head>
+<body>
+<!--
+NOTE: JSmodal will usually be called inline rather than from an HTML tag.
+For demo purposes it seemed better to use click events.
+
+IMPORTANT NOTE: Unlike the Javascript 'alert, confirm, prompt' statements
+JSmodal is NON-BLOCKING - it does not "wait" for user action.
+-->
+
+<h2>Modal Boxes: open</h2>
+
+<!-- Triggering the modal boxes -->
+
+<!-- call the modal box within a function -->
+<button onclick="myMsg()">Open Example A</button>
+
+<!-- open the modal box in a DOM event -->
+<button onclick="JSmodal.open(1,'Hello Modal World')">Open Example B</button>
+
+<!-- open modal box with a long message -->
+<button onclick="JSmodal.open(1,`
+  Phasellus scelerisque sodales condimentum.<br>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+  Phasellus scelerisque sodales condimentum.<br>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+  Phasellus scelerisque sodales condimentum.`)">Open Example C</button>
+
+<br><br><br><br><br><br><br>
+<div id="H"></div>
+
+<script>
+
+function myMsg() {
+  JSmodal.open(0,"Phasellus scelerisque sodales condimentum.");
+  // JSmodal does not wait for user action like the javascript 'alert' statement.
+  document.getElementById('H').innerHTML = "JSmodal is NON-BLOCKING !";
+}
+</script>
+
+<!-- ////////////////////////////////////////////////////////////////////////// -->
+<h2>Modal Boxes: confirm</h2>
+
+
+<button onclick='JSmodal.confirm("thisConfirm()", "Please confirm this");'>
+  JSmodal.confirm Example</button>&nbsp;
+
+<!-- alternatively:
+    the 'confirmed' action can be included as shown here -->
+<a onclick="JSmodal.confirm(`
+  JSmodal.close();
+  alert('Confirmed')`,
+  'Please confirm this')">anchor JSmodal.confirm</a>
+
+<script>
+// User is a user supplied routine to process confirmed response
+function thisConfirm() {
+  JSmodal.close();  // must call to close the modal box
+  // actions to be performed on confirmation
+  alert("Confirmed");
+}
+</script>
+
+<br><br><br><br><br><br><br>
+<!-- ////////////////////////////////////////////////////////////////////////// -->
+<h2>Modal 'prompt' Example</h2>
+<!--
+NOTE: This CANNOT be implemented like the javascript 'prompt' statement!
+JSmodal is NON-BLOCKING which means that it does
+NOT "wait" for user input before proceeding to the next statement.
+see "Open Example A"
+-->
+
+<button onclick='myPrompt()'>JSmodal.prompt Example</button>
+
+<br><br>
+<div id="I"></div>
+
+<script>
+
+function myPrompt() {
+  JSmodal.prompt(`
+    JSmodal.close();
+    let val = document.getElementById('JSid').value;
+    alert('prompted input: ' + val);`,
+  "Please enter your email");
+
+  // immediately falls through to do this ...
+  document.getElementById('I').innerHTML = "Remember JSmodal is Non-blocking!";
+}
+</script>
+
+</body>
+</html>

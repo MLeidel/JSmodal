@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<title>JSmodal Examples</title>
+
+  <script src="../js/JSmodal.min.js"></script>
+  <link rel="stylesheet" href="../css/JSmodalani.css">
+  <!--<link rel="stylesheet" href="JSmodalani.css">-->
+
+</head>
+<body>
+
+<h2>Modal Boxes: open</h2>
+
+<!-- Triggering the modal boxes -->
+
+<!-- call the modal box within a function -->
+<button onclick="myMsg()">Open Example A</button>
+
+<!-- open the modal box in a DOM event -->
+<button onclick="JSmodal.open(1,'Hello Modal World')">Open Example A</button>
+
+<!-- open modal box with a long message -->
+<button onclick="JSmodal.open(1,`
+  Phasellus scelerisque sodales condimentum.<br>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+  Phasellus scelerisque sodales condimentum.<br>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+  Phasellus scelerisque sodales condimentum.`)">Open Example C</button>
+
+<br><br><br><br><br><br><br>
+<div id="H"></div>
+
+<script>
+
+function myMsg() {
+  JSmodal.open(0,"Phasellus scelerisque sodales condimentum.");
+  // JSmodal does not wait for user action like the javascript 'alert' statement.
+  document.getElementById('H').innerHTML = "JSmodal is NON-BLOCKING !";
+}
+
+</script>
+
+</body>
+</html>

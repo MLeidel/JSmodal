@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<title>JSmodal 'prompt' Example</title>
+
+  <script src="JSmodal.min.js"></script>
+  <link rel="stylesheet" href="JSmodalani.css">
+  <!--<link rel="stylesheet" href="JSmodalani.css">-->
+
+</head>
+<body>
+
+<h2>Modal 'prompt' Example</h2>
+<!--
+NOTE: This CANNOT be implemented like the javascript 'prompt' statement!
+JSmodal is NON-BLOCKING which means that it does
+NOT "wait" for user input before proceeding to the next statement.
+see x_alert.html "Open Example A"
+-->
+
+<button onclick='myPrompt()'>JSmodal.prompt Example</button>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+<div id="H"></div>
+
+<script>
+
+function myPrompt() {
+  JSmodal.prompt(`
+    JSmodal.close();
+    let val = document.getElementById('JSid').value;
+    alert('prompted input: ' + val);`,
+  "Please enter your email");
+
+  // immediately falls through to do this ...
+  document.getElementById('H').innerHTML = "Remember JSmodal is Non-blocking!";
+}
+</script>
+
+</body>
+</html>
