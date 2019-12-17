@@ -24,10 +24,7 @@ First JSmodal.js and JSmodal.css must be brought into your web page:
   <script src="JSmodal.min.js"></script>
   <link rel="stylesheet" href="JSmodalani.css">
 ```
-JSmodal.js provides a single object called JSmodal with the following functions:
-* __JSmodal.init()__  
-  This must be called once after the page has loaded.
-  
+
 * __JSmodal.open(_mode, content_)__  
   This opens the modal object over the page dimming the underlying page content.
   A close "X" is always present in the upper right corner of the box. Clicking
