@@ -8,7 +8,7 @@ const JSmodal = {
     document.getElementsByTagName("body")[0].innerHTML += `
       <div id="JSmodal" class="JSmodal">
         <div class="JSmodal-content">
-          <span class="JSclose" onclick="JSmodal.close();">&times;</span>
+          <span class="JSclose" onclick="JSmodal.close();">&#65336;</span>
           <p></p>
         </div>
       </div>
@@ -31,6 +31,10 @@ const JSmodal = {
     }
     JSmodal.closer = mode;
     document.querySelector(".JSmodal-content p").innerHTML = msg;
+
+    if (msg.length > 1800) {  // large text
+      document.querySelector(".JSmodal-content p").style = "overflow: auto; height: 250px;";
+    }
     document.getElementById('JSmodal').style.display = "block";
   },
 
@@ -47,7 +51,7 @@ const JSmodal = {
     `;
     JSmodal.open(0, msg);
   },
-  
+
   // prompt uses open always with a 0 open mode
   prompt : function(routine, msg) {
     msg += `
@@ -57,7 +61,7 @@ const JSmodal = {
     `;
     JSmodal.open(0, msg);
   }
-  
+
 };
 
 document.addEventListener("DOMContentLoaded", function(event) {
